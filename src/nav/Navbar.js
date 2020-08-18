@@ -15,7 +15,8 @@ const useStyles = makeStyles({
     flexGrow: 1
   },
   color:{
-    backgroundColor: '#588B8B'
+    backgroundColor: '#588989',
+    // color: '#1C1C1C'
   },
 });
 
@@ -38,7 +39,7 @@ const Navbar = () => {
           <Typography variant="h6" className={classes.title}>
             My Natural Hair Journey
           </Typography>
-          <Button color="#1C1C1C">Login</Button>
+          <Button color="#1C1C1C">Log Out</Button>
         </Toolbar>
       </AppBar>
     </div>

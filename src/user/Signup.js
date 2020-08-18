@@ -5,7 +5,7 @@ import { FormGroup, Input, Button } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
     },
   },
 }));
@@ -32,12 +32,18 @@ const Signup = (props) => {
 
   return (
     <form onSubmit={handleSubmit} className={classes.root}>
-      <h1>Signup</h1>
+      <h1>Welcome!</h1>
+      <h5>Ready to take the next step in improving yourself.
+          <br/>
+          Signup below to begin your journey to loving your beautiful, natural hair.
+      </h5>
       <FormGroup>
         <Input
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
           value={email}
+          required
+          type="email"
         />
       </FormGroup>
       <FormGroup>
@@ -45,9 +51,11 @@ const Signup = (props) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           value={password}
+          required
+          min={5}
         />
       </FormGroup>
-      <Button type="submit">Signup</Button>
+      <Button type="submit" variant="outlined">Signup</Button>
     </form>
   );
 };

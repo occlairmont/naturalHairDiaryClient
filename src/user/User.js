@@ -5,13 +5,11 @@ import Signup from "./Signup";
 import { Button, Container, CardMedia } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Balconygirl from "../assets/balconygirl.jpg";
+import HairPics from "../assets/closeupgirl2v.jpg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    background: '#EEF0F2',
-    height: '100vh',
     padding: '2em',
   },
   paper: {
@@ -20,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   media: {
-      height: '90vh',
+    height: '100vh',
   }
 }));
 
@@ -41,16 +39,16 @@ const User = (props) => {
     <Container className={classes.root}>
       <Grid container spacing={2} direction="row" justify="center" alignItems="center">
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paper} elevation={4}>
             <div>{title}</div>
             <h5>
               Don't have an account yet?{" "}
-              <Button onClick={(e) => toggle(e)} size="small">Signup</Button>
+              <Button onClick={(e) => toggle(e)} size="small" >Signup</Button>
             </h5>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-            <CardMedia className={classes.media} image={Balconygirl}/>
+            <CardMedia className={classes.media} image={HairPics}/>
         </Grid>
       </Grid>
     </Container>
