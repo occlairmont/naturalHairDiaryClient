@@ -1,19 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
-import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Radio, RadioGroup, FormControlLabel, FormLabel } from "@material-ui/core";
+import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Radio, RadioGroup, FormControlLabel } from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     root: {
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
-        // width: '25ch',
+        width: '25ch',
       },
     },
-    paper: {
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        margin: '12px',
-      },    
   }));
 
 const EntryCreate = (props) => {
@@ -28,7 +23,6 @@ const EntryCreate = (props) => {
   const [value, setValue] = React.useState('No');
 
   const handleChange = (event) => {
-    event.preventDefault();
     setValue(event.target.value);
   };
 
@@ -73,8 +67,7 @@ const EntryCreate = (props) => {
 
   return (
     <div>
-      <h4 className={classes.paper}>Completed a washday? Record it here:</h4>
-      <Button variant="outlined" onClick={handleClickOpen} className={classes.paper} >
+      <Button variant="outlined" onClick={handleClickOpen} >
         Create Entry
       </Button>
       <Dialog
@@ -82,11 +75,11 @@ const EntryCreate = (props) => {
         onClose={handleClose}
         aria-labelledby="wash-day-entry"
         onSubmit={handleSubmit}
-        className={classes.root}>
+      >
         <DialogTitle id="wash-day-entry">Wash Day Entry</DialogTitle>
         <DialogContent>
           <DialogContentText>
-             This is to encourage you to keep going in your journey. So enter as much or as little as you need to record your progress. 
+             This is to encourage you to keep going in your journey in knowing your hair with confidence. So enter as much or as little as you need to record your progress.
           </DialogContentText>
           <TextField
           id="standard-textarea"
@@ -98,7 +91,7 @@ const EntryCreate = (props) => {
           <TextField
           id="standard-textarea"
           label="Goal"
-          placeholder="ex. Shorter detangling time, etc."
+          placeholder="Placeholder"
           multiline
           variant="outlined"
           fullWidth
@@ -107,7 +100,7 @@ const EntryCreate = (props) => {
         <TextField
           id="standard-textarea"
           label="Products Used"
-          placeholder="ex. Eden Bodyworks Shampoo, DIY Deep Conditioner, etc."
+          placeholder="i.e. Eden Bodyworks Peppermint Shampoo, DIY Deep Conditioner, etc."
           multiline
           variant="outlined"
           fullWidth
@@ -116,21 +109,20 @@ const EntryCreate = (props) => {
           <TextField
           id="standard-textarea"
           label="Style"
-          placeholder="ex. Wash and Go, Twistout, etc."
+          placeholder="i.e. Wash and Go, Twistout, etc."
           multiline
           variant="outlined"
           fullWidth
           onChange={(e) => setStyle(e.target.value)}
         />
-        <FormLabel component="legend">Did you reach your goal?</FormLabel>
-        <RadioGroup row label="Did you reach your goal?" name="goal" value={value} onChange={handleChange} onChange={(e) => setIsSuccessful(e.target.value)}>
+        <RadioGroup row aria-label="Did you reach your goal?" name="goal" value={value} onChange={handleChange} onChange={(e) => setIsSuccessful(e.target.value)}>
         <FormControlLabel value="yes" control={<Radio />} label="Yes" />
         <FormControlLabel value="no" control={<Radio />} label="No" />
         </RadioGroup>
         <TextField
           id="standard-textarea"
           label="Notes"
-          placeholder="ex. What worked, techniques, etc."
+          placeholder="Placeholder"
           multiline
           variant="outlined"
           fullWidth

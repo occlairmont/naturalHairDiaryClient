@@ -17,6 +17,11 @@ const Signup = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (password.length < 5){
+        alert("Password min. 5")
+        return 
+    }
+
     fetch("http://localhost:3001/user/signup", {
       method: "POST",
       body: JSON.stringify({ email: email, password: password }),
@@ -50,10 +55,10 @@ const Signup = (props) => {
         <Input
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
-          value={password}
           required
-          min={5}
-        />
+          type="password"
+          value={password}
+          />
       </FormGroup>
       <Button type="submit" variant="outlined">Signup</Button>
     </form>

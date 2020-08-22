@@ -49,7 +49,7 @@ const Login = (props) => {
             placeholder="Password"
             value={password}
             required
-
+            type="password"
           />
         </FormGroup>
         <Button type="submit" variant="outlined">Login</Button>

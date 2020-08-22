@@ -3,6 +3,7 @@ import './App.css';
 // import Navbar from './nav/Navbar';
 import User from './user/User';
 import EntryLog from './entries/EntryLog';
+import Navbar from './nav/Navbar';
 
 function App() {
   const [sessionToken, setSessionToken] = useState('');
@@ -26,12 +27,16 @@ function App() {
       }
 
   const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? <EntryLog token={sessionToken}/> : <User updateToken={updateToken}/>)
+    return (sessionToken === localStorage.getItem('token') ? <EntryLog token={sessionToken}  />  : <User updateToken={updateToken}/>)
+  }
+
+  const userNavbar = () =>{
+    return (sessionToken === localStorage.getItem('token') ? <Navbar clickLogout={clearToken}/> : <></>)
   }
 
   return (
     <div >
-      {/* <Navbar/> */}
+      {userNavbar()}
       {protectedViews()}
     </div>
   );

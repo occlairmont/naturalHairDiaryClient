@@ -10,7 +10,7 @@ import HairPics from "../assets/closeupgirl2v.jpg";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: '2em',
+    padding: "2em",
   },
   paper: {
     padding: theme.spacing(3),
@@ -18,14 +18,16 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   media: {
-    height: '100vh',
-  }
+    height: "100vh",
+  },
 }));
 
 const User = (props) => {
   const classes = useStyles();
   const [isLogin, setIsLogin] = useState(true);
   const title = isLogin ? <Login updateToken={props.updateToken} /> : <Signup updateToken={props.updateToken} />;
+  const buttonTitle = isLogin ? "Signup" : "Login";
+  const buttonTagLine = isLogin ? "Don't have an account yet?" : "Already have an account?";
 
   function toggle(e) {
     e.preventDefault();
@@ -38,17 +40,19 @@ const User = (props) => {
   return (
     <Container className={classes.root}>
       <Grid container spacing={2} direction="row" justify="center" alignItems="center">
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4} md={6}>
           <Paper className={classes.paper} elevation={4}>
             <div>{title}</div>
             <h5>
-              Don't have an account yet?{" "}
-              <Button onClick={(e) => toggle(e)} size="small" >Signup</Button>
+              {buttonTagLine}
+              <Button onClick={(e) => toggle(e)} size="small">
+                {buttonTitle}
+              </Button>
             </h5>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
-            <CardMedia className={classes.media} image={HairPics}/>
+        <Grid item xs={12} md={6} sm={8}>
+          <CardMedia className={classes.media} image={HairPics} />
         </Grid>
       </Grid>
     </Container>
