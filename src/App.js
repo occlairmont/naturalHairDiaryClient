@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-// import Navbar from './nav/Navbar';
 import User from './user/User';
 import EntryLog from './entries/EntryLog';
 import Navbar from './nav/Navbar';
+import {BrowserRouter as Router} from 'react-router-dom';
+
 
 function App() {
   const [sessionToken, setSessionToken] = useState('');
@@ -12,7 +13,7 @@ function App() {
     if(localStorage.getItem('token')){
       setSessionToken(localStorage.getItem('token'));
     } 
-    
+    document.title='Natural Hair Journey'
   },[]);
 
   const updateToken = (newToken) =>{
@@ -36,8 +37,10 @@ function App() {
 
   return (
     <div >
+      <Router>
       {userNavbar()}
       {protectedViews()}
+      </Router>
     </div>
   );
 }

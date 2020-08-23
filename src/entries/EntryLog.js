@@ -3,11 +3,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Paper, Grid, Button } from "@material-ui/core/";
 import EntryView from "./EntryView";
 import EntryCreate from './EntryCreate';
+import {Route, Switch} from "react-router-dom";
+import About from "../about/About";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    margin: 0,
   },
   paper: {
     padding: theme.spacing(2),
@@ -58,21 +59,24 @@ const updateOff = () => {
 }
 
 return (
-    <div className={classes.root}>
+    <div style={{padding: 20}}>
     <Grid>
-      <Grid container spacing={1} className={classes.grid}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
           <Paper className={classes.paperMod}>
             <EntryCreate/>
           </Paper>
           <br/>
-          <Paper className={classes.paper}>xs=12</Paper>
+          <Paper className={classes.paper}>Calendar</Paper>
         </Grid>
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}><EntryView/></Paper>
         </Grid>
       </Grid>
     </Grid>
+    <Switch>
+        <Route exact path="/about"><About/></Route>
+    </Switch>
     </div>
   );
 };

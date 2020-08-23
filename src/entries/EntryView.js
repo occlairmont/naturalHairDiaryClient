@@ -29,7 +29,7 @@ const EntryView = (props) => {
           method: "DELETE",
           headers: new Headers({
             "Content-Type": "application/json",
-            Authorization: props.token,
+            "Authorization": props.token,
           }),
         }).then(() => props.fetchEntries());
       };

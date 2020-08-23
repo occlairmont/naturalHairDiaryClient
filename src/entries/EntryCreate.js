@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         textAlign: "center",
         color: theme.palette.text.secondary,
-        margin: '12px',
+        margin: '10px',
       },    
   }));
 
@@ -23,14 +23,8 @@ const EntryCreate = (props) => {
   const [goal, setGoal] = useState("");
   const [products, setProducts] = useState("");
   const [style, setStyle] = useState("");
-  const [isSuccessful, setIsSuccessful] = useState(false);
+  const [isSuccessful, setIsSuccessful] = useState("No");
   const [note, setNote] = useState("");
-  const [value, setValue] = React.useState('No');
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    setValue(event.target.value);
-  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,7 +48,7 @@ const EntryCreate = (props) => {
       }),
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization: props.token,
+        "Authorization": props.token,
       }),
     })
       .then((res) => res.json())
@@ -73,7 +67,7 @@ const EntryCreate = (props) => {
 
   return (
     <div>
-      <h4 className={classes.paper}>Completed a washday? Record it here:</h4>
+      <h4 className={classes.paper}>Completed a wash day?</h4>
       <Button variant="outlined" onClick={handleClickOpen} className={classes.paper} >
         Create Entry
       </Button>
@@ -123,7 +117,7 @@ const EntryCreate = (props) => {
           onChange={(e) => setStyle(e.target.value)}
         />
         <FormLabel component="legend">Did you reach your goal?</FormLabel>
-        <RadioGroup row label="Did you reach your goal?" name="goal" value={value} onChange={handleChange} onChange={(e) => setIsSuccessful(e.target.value)}>
+        <RadioGroup row label="Did you meet your goal?" name="goal" value={isSuccessful} onChange={(e) => setIsSuccessful(e.target.value)}>
         <FormControlLabel value="yes" control={<Radio />} label="Yes" />
         <FormControlLabel value="no" control={<Radio />} label="No" />
         </RadioGroup>
