@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Grid, Button } from "@material-ui/core/";
+import { Paper, Grid } from "@material-ui/core/";
 import EntryView from "./EntryView";
 import EntryCreate from './EntryCreate';
-import {Route, Switch} from "react-router-dom";
-import About from "../about/About";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +26,7 @@ const EntryLog = (props) => {
   const classes = useStyles();
   const [entries, setEntries] = useState([]);
   const [updateActive, setUpdateActive] = useState(false);
-  const [entriesToUpdate, setEntriesToUpdate] = useState({});
+  const [entryToUpdate, setEntryToUpdate] = useState({});
 
   const fetchEntries = () => {
     fetch("http://localhost:3001/entry/all", {
@@ -46,7 +44,7 @@ const EntryLog = (props) => {
   };
 
 const editUpdateEntry = (entry) => {
-    setEntriesToUpdate(entry);
+    setEntryToUpdate(entry);
     console.log(entry);
 }
 
@@ -58,25 +56,27 @@ const updateOff = () => {
     setUpdateActive(false);
 }
 
+useEffect(() => {
+  fetchEntries();
+},[])
+
+
 return (
     <div style={{padding: 20}}>
     <Grid>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
           <Paper className={classes.paperMod}>
-            <EntryCreate/>
+            <EntryCreate fetchEntries={fetchEntries} token={props.token}/>
           </Paper>
           <br/>
           <Paper className={classes.paper}>Calendar</Paper>
         </Grid>
         <Grid item xs={12} sm={8}>
-          <Paper className={classes.paper}><EntryView/></Paper>
+          <Paper className={classes.paper}><EntryView /></Paper>
         </Grid>
       </Grid>
     </Grid>
-    <Switch>
-        <Route exact path="/about"><About/></Route>
-    </Switch>
     </div>
   );
 };

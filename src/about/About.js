@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
   },
   media: {
-      height: '80vh'
+      height: '83vh'
   }
 }));
 
@@ -25,7 +25,7 @@ const About = () => {
     const classes = useStyles();
     return ( 
       <div style={{padding: 20}} >
-        <Grid container spacing={2} justify="center" alignItems="center">
+        <Grid container spacing={3} direction="row" justify="center" alignItems="center">
           <Grid item xs={12} sm={6} md={5}>
             <CardMedia 
               className={classes.media}

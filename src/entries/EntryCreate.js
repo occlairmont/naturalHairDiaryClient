@@ -23,7 +23,7 @@ const EntryCreate = (props) => {
   const [goal, setGoal] = useState("");
   const [products, setProducts] = useState("");
   const [style, setStyle] = useState("");
-  const [isSuccessful, setIsSuccessful] = useState("No");
+  const [isSuccessful, setIsSuccessful] = useState(false);
   const [note, setNote] = useState("");
 
   const handleClickOpen = () => {
@@ -59,7 +59,7 @@ const EntryCreate = (props) => {
         setProducts("");
         setStyle("");
         // not sure what to put for isSuccessful since it's a boolean
-        setIsSuccessful("");
+        setIsSuccessful(false);
         setNote("");
         props.fetchEntries();
       });
@@ -77,7 +77,7 @@ const EntryCreate = (props) => {
         aria-labelledby="wash-day-entry"
         onSubmit={handleSubmit}
         className={classes.root}>
-        <DialogTitle id="wash-day-entry">Wash Day Entry</DialogTitle>
+        <DialogTitle id="wash-day-entry" style={{textAlign: "center"}}>Wash Day Entry</DialogTitle>
         <DialogContent>
           <DialogContentText>
              This is to encourage you to keep going in your journey. So enter as much or as little as you need to record your progress. 
@@ -87,6 +87,7 @@ const EntryCreate = (props) => {
           label="Date"
           placeholder="ex. 8/10/2020"
           variant="outlined"
+          value={date}
           onChange={(e) => setDate(e.target.value)}
         />
           <TextField
@@ -96,6 +97,7 @@ const EntryCreate = (props) => {
           multiline
           variant="outlined"
           fullWidth
+          value={goal}
           onChange={(e) => setGoal(e.target.value)}
         />
         <TextField
@@ -105,6 +107,7 @@ const EntryCreate = (props) => {
           multiline
           variant="outlined"
           fullWidth
+          value={products}
           onChange={(e) => setProducts(e.target.value)}
         />
           <TextField
@@ -114,9 +117,10 @@ const EntryCreate = (props) => {
           multiline
           variant="outlined"
           fullWidth
+          value={style}
           onChange={(e) => setStyle(e.target.value)}
         />
-        <FormLabel component="legend">Did you reach your goal?</FormLabel>
+        <FormLabel component="legend">Did you meet your goal?</FormLabel>
         <RadioGroup row label="Did you meet your goal?" name="goal" value={isSuccessful} onChange={(e) => setIsSuccessful(e.target.value)}>
         <FormControlLabel value="yes" control={<Radio />} label="Yes" />
         <FormControlLabel value="no" control={<Radio />} label="No" />
@@ -128,6 +132,7 @@ const EntryCreate = (props) => {
           multiline
           variant="outlined"
           fullWidth
+          value={note}
           onChange={(e) => setNote(e.target.value)}
         />
         </DialogContent>
