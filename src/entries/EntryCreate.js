@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
 
 const EntryCreate = (props) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [date, setDate] = useState("");
   const [goal, setGoal] = useState("");
   const [products, setProducts] = useState("");
   const [style, setStyle] = useState("");
-  const [isSuccessful, setIsSuccessful] = useState(false);
+  const [isSuccessful, setIsSuccessful] = useState("No");
   const [note, setNote] = useState("");
 
   const handleClickOpen = () => {
@@ -59,23 +59,24 @@ const EntryCreate = (props) => {
         setProducts("");
         setStyle("");
         // not sure what to put for isSuccessful since it's a boolean
-        setIsSuccessful(false);
+        setIsSuccessful("");
         setNote("");
         props.fetchEntries();
+        handleClose()
       });
   };
 
   return (
-    <div>
+    <div >
       <h4 className={classes.paper}>Completed a wash day?</h4>
-      <Button variant="outlined" onClick={handleClickOpen} className={classes.paper} >
+      <Button variant="outlined" onClick={handleClickOpen} className={classes.paper}>
         Create Entry
       </Button>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="wash-day-entry"
-        onSubmit={handleSubmit}
+        
         className={classes.root}>
         <DialogTitle id="wash-day-entry" style={{textAlign: "center"}}>Wash Day Entry</DialogTitle>
         <DialogContent>
@@ -120,10 +121,10 @@ const EntryCreate = (props) => {
           value={style}
           onChange={(e) => setStyle(e.target.value)}
         />
-        <FormLabel component="legend">Did you meet your goal?</FormLabel>
-        <RadioGroup row label="Did you meet your goal?" name="goal" value={isSuccessful} onChange={(e) => setIsSuccessful(e.target.value)}>
-        <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-        <FormControlLabel value="no" control={<Radio />} label="No" />
+        <FormLabel component="legend" style={{paddingLeft: '16px', paddingTop: '5px'}}>Did you meet your goal?</FormLabel>
+        <RadioGroup row label="Did you meet your goal?" name="goal" style={{paddingLeft: '20px'}} value={isSuccessful} onChange={(e) => setIsSuccessful(e.target.value)}>
+        <FormControlLabel value="Yes" control={<Radio color="default"/>} label="Yes" />
+        <FormControlLabel value="No" control={<Radio color="default"/>} label="No" />
         </RadioGroup>
         <TextField
           id="standard-textarea"
@@ -137,10 +138,10 @@ const EntryCreate = (props) => {
         />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color='primary'>
             Cancel
           </Button>
-          <Button onClick={handleClose} onSubmit={handleSubmit} color="primary">
+          <Button onClick={handleSubmit} value="submit" color="primary" >
             Save
           </Button>
         </DialogActions>

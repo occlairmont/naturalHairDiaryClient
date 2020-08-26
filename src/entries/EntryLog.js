@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Paper, Grid } from "@material-ui/core/";
 import EntryView from "./EntryView";
 import EntryCreate from './EntryCreate';
+import EntryEdit from './EntryEdit';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +40,7 @@ const EntryLog = (props) => {
       .then((res) => res.json())
       .then((logData) => {
         setEntries(logData);
-        console.log(logData);
+        console.log("from entrylog", logData);
       });
   };
 
@@ -73,8 +74,9 @@ return (
           <Paper className={classes.paper}>Calendar</Paper>
         </Grid>
         <Grid item xs={12} sm={8}>
-          <Paper className={classes.paper}><EntryView /></Paper>
+          <Paper className={classes.paper}><EntryView entries={entries} editUpdateEntry={editUpdateEntry} fetchEntries={fetchEntries} updateOn={updateOn} token={props.token} /></Paper>
         </Grid>
+        {updateActive ? <EntryEdit entryToUpdate={entryToUpdate} token={props.token} fetchEntries={fetchEntries} updateOff={updateOff} /> : <></>}
       </Grid>
     </Grid>
     </div>

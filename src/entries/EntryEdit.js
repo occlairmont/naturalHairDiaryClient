@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
@@ -6,7 +6,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   Radio,
   RadioGroup,
@@ -34,13 +33,13 @@ const EntryEdit = (props) => {
   const [editGoal, setEditGoal] = useState("");
   const [editProducts, setEditProducts] = useState("");
   const [editStyle, setEditStyle] = useState("");
-  const [editIsSuccessful, setEditIsSuccessful] = useState(false);
+  const [editIsSuccessful, setEditIsSuccessful] = useState("No");
   const [editNote, setEditNote] = useState("");
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = () => {
     setOpen(false);
@@ -66,6 +65,7 @@ const EntryEdit = (props) => {
       .then((res) =>  {
         props.fetchEntries();
         props.updateoff();
+        handleClose()
       });
   };
 
@@ -121,10 +121,9 @@ const EntryEdit = (props) => {
             label="Did you meet your goal?"
             name="goal"
             value={editIsSuccessful}
-            onChange={(e) => setEditIsSuccessful(e.target.value)}
-          >
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio />} label="No" />
+            onChange={(e) => setEditIsSuccessful(e.target.value)}>
+            <FormControlLabel value="Yes" control={<Radio color="default"/>} label="Yes" />
+            <FormControlLabel value="No" control={<Radio color="default"/>} label="No" />
           </RadioGroup>
           <TextField
             id="note"
@@ -140,7 +139,7 @@ const EntryEdit = (props) => {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} onSubmit={handleSubmit} color="primary">
+          <Button onClick={handleSubmit} color="primary">
             Update
           </Button>
         </DialogActions>

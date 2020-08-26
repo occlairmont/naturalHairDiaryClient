@@ -9,7 +9,8 @@ const useStyles = makeStyles({
     width: '100%',
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    color:'#ECEBE4',
   },
   color:{
     backgroundColor: '#406464',
