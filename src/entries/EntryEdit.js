@@ -65,7 +65,7 @@ const EntryEdit = (props) => {
       .then((res) =>  {
         props.fetchEntries();
         props.updateoff();
-        handleClose()
+        handleClose();
       });
   };
 
@@ -75,7 +75,6 @@ const EntryEdit = (props) => {
         open={open}
         onClose={handleClose}
         aria-labelledby="wash-day-entry"
-        onSubmit={handleSubmit}
         className={classes.root}>
         <DialogTitle id="wash-day-entry" style={{ textAlign: "center" }}>
           Wash Day Entry

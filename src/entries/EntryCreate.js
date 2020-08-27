@@ -23,7 +23,7 @@ const EntryCreate = (props) => {
   const [goal, setGoal] = useState("");
   const [products, setProducts] = useState("");
   const [style, setStyle] = useState("");
-  const [isSuccessful, setIsSuccessful] = useState("No");
+  const [isSuccessful, setIsSuccessful] = useState(false);
   const [note, setNote] = useState("");
 
   const handleClickOpen = () => {
@@ -33,6 +33,14 @@ const EntryCreate = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+// const handleRadioChange = (e) => {
+//   
+// 
+// 
+// 
+//  setIsSuccessful(e.target.value)
+// };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,7 +84,6 @@ const EntryCreate = (props) => {
         open={open}
         onClose={handleClose}
         aria-labelledby="wash-day-entry"
-        
         className={classes.root}>
         <DialogTitle id="wash-day-entry" style={{textAlign: "center"}}>Wash Day Entry</DialogTitle>
         <DialogContent>
@@ -86,7 +93,7 @@ const EntryCreate = (props) => {
           <TextField
           id="standard-textarea"
           label="Date"
-          placeholder="ex. 8/10/2020"
+          placeholder="MM/DD/YYYY"
           variant="outlined"
           value={date}
           onChange={(e) => setDate(e.target.value)}
@@ -138,10 +145,10 @@ const EntryCreate = (props) => {
         />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color='primary'>
+          <Button onClick={handleClose} color="default">
             Cancel
           </Button>
-          <Button onClick={handleSubmit} value="submit" color="primary" >
+          <Button onClick={handleSubmit} value="submit" color="default" >
             Save
           </Button>
         </DialogActions>
