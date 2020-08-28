@@ -30,12 +30,12 @@ const useStyles = makeStyles((theme) => ({
 
 const EntryEdit = (props) => {
   const classes = useStyles();
-  const [editDate, setEditDate] = useState("");
-  const [editGoal, setEditGoal] = useState("");
-  const [editProducts, setEditProducts] = useState("");
-  const [editStyle, setEditStyle] = useState("");
-  const [editIsSuccessful, setEditIsSuccessful] = useState("No");
-  const [editNote, setEditNote] = useState("");
+  const [editDate, setEditDate] = useState(formatDate(props.entryToUpdate.date));
+  const [editGoal, setEditGoal] = useState(props.entryToUpdate.goal);
+  const [editProducts, setEditProducts] = useState(props.entryToUpdate.products);
+  const [editStyle, setEditStyle] = useState(props.entryToUpdate.style);
+  const [editIsSuccessful, setEditIsSuccessful] = useState(props.entryToUpdate.isSuccessful.toString());
+  const [editNote, setEditNote] = useState(props.entryToUpdate.note);
   const [open, setOpen] = React.useState(false);
 
   // const handleClickOpen = () => {
@@ -43,7 +43,7 @@ const EntryEdit = (props) => {
   // };
 
   const handleClose = () => {
-    setOpen(false);
+   props.updateOff(false);
   };
 
   const handleSubmit = (e) => {
@@ -55,7 +55,7 @@ const EntryEdit = (props) => {
         goal: editGoal,
         products: editProducts,
         style: editStyle,
-        isSuccessful: editIsSuccessful,
+        isSuccessful: editIsSuccessful == "true" ? true : false,
         note: editNote,
       }),
       headers: new Headers({
@@ -65,15 +65,20 @@ const EntryEdit = (props) => {
     })
       .then((res) =>  {
         props.fetchEntries();
-        props.updateoff();
+        // props.editUpdateEntry(entry);
         handleClose();
       });
   };
 
+  function formatDate(dateTime) {
+    let date = dateTime.split("T")
+    return date[0]
+  }
+
   return (
     <div>
       <Dialog
-        open={open}
+        open={true}
         onClose={handleClose}
         aria-labelledby="wash-day-entry"
         className={classes.root}>
@@ -86,7 +91,8 @@ const EntryEdit = (props) => {
             label="Date"
             variant="outlined"
             value={editDate}
-            onChange={(e) => setEditDate(e.target.value)}
+            onChange={(e) => setEditDate(e.target.value.toLocaleString())}
+            type="date"
           />
           <TextField
             id="goal"

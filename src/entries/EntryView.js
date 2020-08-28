@@ -51,6 +51,10 @@ const EntryView = (props) => {
 
   const entryMap = () => {
     console.log(props.entries);
+    function formatDate(dateTime) {
+      let date = new Date(dateTime)
+      return date.toLocaleString().split(",")[0]
+    }
     return props.entries.map((entry, index) => {
       return (
         <div>
@@ -60,7 +64,7 @@ const EntryView = (props) => {
                 className={classes.title}
                 color="textSecondary"
                 gutterBottom>
-                {entry.date}
+                {formatDate(entry.date)}
               </Typography>
               <hr />
               <Typography variant="h6" className={classes.pos}>
@@ -78,7 +82,7 @@ const EntryView = (props) => {
               <Typography variant="h6" className={classes.pos}>
                 Was Your Goal Met?
               </Typography>
-              <p className={classes.respos}>{entry.isSuccessful}</p>
+              <p className={classes.respos}>{entry.isSuccessful.toString()}</p>
               <Typography variant="h6" className={classes.pos}>
                 Notes:
               </Typography>
@@ -88,12 +92,12 @@ const EntryView = (props) => {
             <CardActions className={classes.button}>
               <Tooltip
                 title="Edit"
-                arrow
+                arrow>
+                <Button size="small"                 
                 onClick={() => {
                   props.editUpdateEntry(entry);
                   props.updateOn();
                 }}>
-                <Button size="small">
                   <EditRounded />
                 </Button>
               </Tooltip>
