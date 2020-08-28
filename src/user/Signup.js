@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { FormGroup, Input, Button } from "@material-ui/core";
+import APIURL from '../helpers/environment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +23,7 @@ const Signup = (props) => {
         return 
     }
 
-    fetch("http://localhost:3001/user/signup", {
+    fetch(`${APIURL}/user/signup`, {
       method: "POST",
       body: JSON.stringify({ email: email, password: password }),
       headers: new Headers({

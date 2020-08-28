@@ -6,6 +6,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import {Button} from '@material-ui/core';
+import APIURL from '../helpers/environment';
 
 const CalendarSearch = (props) => {
     const [startDate, setStartDate] = React.useState(new Date('2020-08-18T21:11:54'));
@@ -23,7 +24,7 @@ const CalendarSearch = (props) => {
 
     const handleSubmit = (e) => {
         e.prevent.default();
-        fetch('https://localhost:3001/entry/search-dates', {
+        fetch(`${APIURL}/entry/search-dates`, {
             method: 'GET',
             body: JSON.stringify({
                 date: startDate,

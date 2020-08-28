@@ -9,6 +9,7 @@ import {
   Tooltip,
 } from "@material-ui/core";
 import { EditRounded, DeleteRounded } from "@material-ui/icons";
+import APIURL from '../helpers/environment';
 
 const useStyles = makeStyles({
   root: {
@@ -39,7 +40,7 @@ const EntryView = (props) => {
   const classes = useStyles();
 
   const deleteEntry = (entry) => {
-    fetch(`http://localhost:3001/entry/delete/${entry.id}`, {
+    fetch(`${APIURL}/entry/delete/${entry.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

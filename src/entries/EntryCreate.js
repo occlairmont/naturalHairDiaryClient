@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Radio, RadioGroup, FormControlLabel, FormLabel } from "@material-ui/core";
+import APIURL from '../helpers/environment';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,7 +45,7 @@ const EntryCreate = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3001/entry/new", {
+    fetch(`${APIURL}/entry/new`, {
       method: "POST",
       body: JSON.stringify({
         date: date,

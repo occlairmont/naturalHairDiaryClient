@@ -5,6 +5,7 @@ import EntryView from "./EntryView";
 import EntryCreate from './EntryCreate';
 import EntryEdit from './EntryEdit';
 import CalendarSearch from "./CalendarSearch";
+import APIURL from '../helpers/environment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +32,7 @@ const EntryLog = (props) => {
   const [entryToUpdate, setEntryToUpdate] = useState({});
 
   const fetchEntries = () => {
-    fetch("http://localhost:3001/entry/all", {
+    fetch(`${APIURL}/entry/all`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

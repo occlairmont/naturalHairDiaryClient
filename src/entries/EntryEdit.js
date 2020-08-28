@@ -12,6 +12,7 @@ import {
   FormControlLabel,
   FormLabel,
 } from "@material-ui/core";
+import APIURL from '../helpers/environment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +48,7 @@ const EntryEdit = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3001/entry/update/${props.entryToUpdate.id}`, {
+    fetch(`${APIURL}/entry/update/${props.entryToUpdate.id}`, {
       method: "PUT",
       body: JSON.stringify({
         date: editDate,
