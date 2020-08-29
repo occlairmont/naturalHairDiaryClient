@@ -73,7 +73,7 @@ return (
             <EntryCreate fetchEntries={fetchEntries} token={props.token}/>
           </Paper>
           <br/>
-          <Paper className={classes.paper}><CalendarSearch fetchEntries={fetchEntries} token={props.token}/></Paper>
+          <Paper className={classes.paper}><CalendarSearch fetchEntries={fetchEntries} token={props.token} setEntries={setEntries}/></Paper>
         </Grid>
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}><EntryView entries={entries} editUpdateEntry={editUpdateEntry} fetchEntries={fetchEntries} updateOn={updateOn} token={props.token} /></Paper>

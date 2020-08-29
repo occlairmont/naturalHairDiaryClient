@@ -52,7 +52,7 @@ const EntryCreate = (props) => {
         goal: goal,
         products: products,
         style: style,
-        isSuccessful: isSuccessful == "true" ? true : false,
+        isSuccessful: isSuccessful == "Yes" ? true : false,
         note: note,
       }),
       headers: new Headers({
@@ -93,11 +93,12 @@ const EntryCreate = (props) => {
           </DialogContentText>
           <TextField
           id="standard-textarea"
-          label="Date"
-          placeholder="MM/DD/YYYY"
+          // label="Date"
+          // placeholder="MM/DD/YYYY"
           variant="outlined"
           value={date}
           onChange={(e) => setDate(e.target.value)}
+          type="date"
         />
           <TextField
           id="standard-textarea"
@@ -131,8 +132,8 @@ const EntryCreate = (props) => {
         />
         <FormLabel component="legend" style={{paddingLeft: '16px', paddingTop: '5px'}}>Did you meet your goal?</FormLabel>
         <RadioGroup row label="Did you meet your goal?" name="goal" style={{paddingLeft: '20px'}} value={isSuccessful} onChange={(e) => setIsSuccessful(e.target.value)}>
-        <FormControlLabel value="true" control={<Radio color="default"/>} label="Yes" />
-        <FormControlLabel value="false" control={<Radio color="default"/>} label="No" />
+        <FormControlLabel value="Yes" control={<Radio color="default"/>} label="Yes" />
+        <FormControlLabel value="No" control={<Radio color="default"/>} label="No" />
         </RadioGroup>
         <TextField
           id="standard-textarea"

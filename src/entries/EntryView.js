@@ -103,9 +103,8 @@ const EntryView = (props) => {
               </Tooltip>
               <Tooltip
                 title="Delete"
-                arrow
-                onClick={() => {deleteEntry(entry);}}>
-                <Button size="small">
+                arrow>
+                <Button size="small" onClick={() => {deleteEntry(entry);}}>
                   <DeleteRounded />
                 </Button>
               </Tooltip>

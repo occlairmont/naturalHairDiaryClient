@@ -55,7 +55,7 @@ const EntryEdit = (props) => {
         goal: editGoal,
         products: editProducts,
         style: editStyle,
-        isSuccessful: editIsSuccessful == "true" ? true : false,
+        isSuccessful: editIsSuccessful == "Yes" ? true : false,
         note: editNote,
       }),
       headers: new Headers({
@@ -64,7 +64,7 @@ const EntryEdit = (props) => {
       }),
     })
       .then((res) =>  {
-        props.fetchEntries();
+        ;
         // props.editUpdateEntry(entry);
         handleClose();
       });
@@ -121,13 +121,14 @@ const EntryEdit = (props) => {
             value={editStyle}
             onChange={(e) => setEditStyle(e.target.value)}
           />
-          <FormLabel component="legend">Did you meet your goal?</FormLabel>
+          <FormLabel component="legend" style={{paddingLeft: '16px', paddingTop: '5px'}}>Did you meet your goal?</FormLabel>
           <RadioGroup
             row
             label="Did you meet your goal?"
             name="goal"
             value={editIsSuccessful}
-            onChange={(e) => setEditIsSuccessful(e.target.value)}>
+            onChange={(e) => setEditIsSuccessful(e.target.value)} 
+            style={{paddingLeft: '20px'}}>
             <FormControlLabel value="Yes" control={<Radio color="default"/>} label="Yes" />
             <FormControlLabel value="No" control={<Radio color="default"/>} label="No" />
           </RadioGroup>
