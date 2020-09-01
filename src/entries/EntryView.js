@@ -11,6 +11,9 @@ import {
 import { EditRounded, DeleteRounded } from "@material-ui/icons";
 import APIURL from '../helpers/environment';
 
+const font = "'Barlow', san-serif"
+const secFont = "'Shadows Into Light', san-serif"
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -24,15 +27,18 @@ const useStyles = makeStyles({
     paddingLeft: 0,
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     textAlign: "left",
   },
   pos: {
     marginBottom: 10,
     textAlign: "left",
+    fontFamily: secFont,
+    // fontSize: 25,
   },
   respos: {
     textAlign: "left",
+    fontFamily: font,
   },
 });
 
@@ -67,23 +73,23 @@ const EntryView = (props) => {
                 {formatDate(entry.date)}
               </Typography>
               <hr />
-              <Typography variant="h6" className={classes.pos}>
+              <Typography variant="h5" className={classes.pos}>
                 Today's Goal:
               </Typography>
               <p className={classes.respos}>{entry.goal}</p>
-              <Typography variant="h6" className={classes.pos}>
+              <Typography variant="h5" className={classes.pos}>
                 Products Used:
               </Typography>
               <p className={classes.respos}>{entry.products}</p>
-              <Typography variant="h6" className={classes.pos}>
+              <Typography variant="h5" className={classes.pos}>
                 Style Chosen:
               </Typography>
               <p className={classes.respos}>{entry.style}</p>
-              <Typography variant="h6" className={classes.pos}>
+              <Typography variant="h5" className={classes.pos}>
                 Was Your Goal Met?
               </Typography>
               <p className={classes.respos}>{entry.isSuccessful.toString()}</p>
-              <Typography variant="h6" className={classes.pos}>
+              <Typography variant="h5" className={classes.pos}>
                 Notes:
               </Typography>
               <p className={classes.respos}>{entry.note}</p>

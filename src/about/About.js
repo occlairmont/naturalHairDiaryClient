@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {Paper, Grid, CardMedia }from '@material-ui/core';
 import Pics from '../assets/girlintwists.jpg';
 
+const font = "'Barlow', san-serif"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -15,9 +17,10 @@ const useStyles = makeStyles((theme) => ({
   content: {
     padding: theme.spacing(2),
     textAlign: 'left',
+    fontFamily: font,
   },
   media: {
-      height: '83vh'
+      height: '85vh'
   }
 }));
 
@@ -25,7 +28,7 @@ const About = () => {
     const classes = useStyles();
     return ( 
       <div style={{padding: 20}} >
-        <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+        <Grid container spacing={2} direction="row" justify="center" alignItems="center">
           <Grid item xs={12} sm={6} md={5}>
             <CardMedia 
               className={classes.media}

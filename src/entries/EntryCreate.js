@@ -75,6 +75,11 @@ const EntryCreate = (props) => {
       });
   };
 
+  function formatDate(dateTime) {
+    let date = dateTime.split("T")
+    return date[0]
+  }
+
   return (
     <div >
       <h4 className={classes.paper}>Completed a wash day?</h4>
@@ -96,9 +101,9 @@ const EntryCreate = (props) => {
           // label="Date"
           // placeholder="MM/DD/YYYY"
           variant="outlined"
-          value={date}
+          value={formatDate(date)}
           onChange={(e) => setDate(e.target.value)}
-          type="date"
+          // type="date"
         />
           <TextField
           id="standard-textarea"

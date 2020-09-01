@@ -10,8 +10,8 @@ import {Button} from '@material-ui/core';
 import APIURL from '../helpers/environment';
 
 const CalendarSearch = (props) => {
-    const [startDate, setStartDate] = useState(new Date('2020-06-18T21:11:54'));
-    const [endDate, setEndDate] = useState(new Date('2020-08-29T21:11:54'));
+    const [startDate, setStartDate] = useState(new Date('2020-01-01T21:11:54'));
+    const [endDate, setEndDate] = useState(new Date('2020-01-01T21:11:54'));
     const [open, setOpen] = useState(false);
 
     const handleClose = () => {
@@ -27,15 +27,16 @@ const CalendarSearch = (props) => {
       };
     
     function formatDate(date){
-        let convertedDate = new Date(date).toISOString().split("T")[0]
+        let convertedDate = new Date(date).toISOString().split("T")[0];
         // 1996-10-15T00:05:32.000Z
         // [1996-10-15, 00:05:32.000Z]
         // 1996-10-15
-        let day = convertedDate.split("-")[2]
+        // let day = convertedDate.split("-")[2]
         // [1996, 10, 15]
-        let month = convertedDate.split("-")[1]
-        let year = convertedDate.split("-")[0]
-        return `${month}/${day}/${year}`
+        // let month = convertedDate.split("-")[1]
+        // let year = convertedDate.split("-")[0]
+        // return `${month}/${day}/${year}`
+        return convertedDate;
     }
 
     useEffect(() => {
@@ -50,22 +51,22 @@ const CalendarSearch = (props) => {
 //  }
 
     const handleSubmit = () => {
-        const start = formatDate(startDate)
-        const end = formatDate(endDate)
+        const start = formatDate(startDate);
+        const end = formatDate(endDate);
         fetch(`${APIURL}/entry/search-dates`, {
             method: 'POST',
             body: JSON.stringify({
-                startDate: start.toString(),
-                endDate: end.toString(),
+                startDate: start,
+                endDate: end,
             }),
             headers: new Headers ({
-                'Content-Type': 'application.json',
-                'Authorization': props.token,
-            })
+                'Content-Type': 'application/json',
+                'Authorization' : props.token,
+            }),
         })
         .then((res) => res.json())
         .then((logData) => {
-            // props.setEntries(logData);
+            props.setEntries(logData);
             console.log("from calsearch", logData, props.token);
         });
     };

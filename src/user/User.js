@@ -51,7 +51,7 @@ const User = (props) => {
             </h5>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={6} sm={8}>
+        <Grid item xs={12} sm={8} md={6}>
           <CardMedia className={classes.media} image={HairPics} />
         </Grid>
       </Grid>

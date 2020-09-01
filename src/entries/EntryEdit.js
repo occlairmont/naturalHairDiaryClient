@@ -36,11 +36,6 @@ const EntryEdit = (props) => {
   const [editStyle, setEditStyle] = useState(props.entryToUpdate.style);
   const [editIsSuccessful, setEditIsSuccessful] = useState(props.entryToUpdate.isSuccessful.toString());
   const [editNote, setEditNote] = useState(props.entryToUpdate.note);
-  const [open, setOpen] = React.useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
 
   const handleClose = () => {
    props.updateOff(false);
@@ -64,15 +59,14 @@ const EntryEdit = (props) => {
       }),
     })
       .then((res) =>  {
-        ;
-        // props.editUpdateEntry(entry);
+        props.fetchEntries();
         handleClose();
       });
   };
 
   function formatDate(dateTime) {
-    let date = dateTime.split("T")
-    return date[0]
+    let date = new Date(dateTime)
+    return date.toLocaleString().split(",")[0]
   }
 
   return (
@@ -91,8 +85,7 @@ const EntryEdit = (props) => {
             label="Date"
             variant="outlined"
             value={editDate}
-            onChange={(e) => setEditDate(e.target.value.toLocaleString())}
-            type="date"
+            onChange={(e) => setEditDate(e.target.value)}
           />
           <TextField
             id="goal"

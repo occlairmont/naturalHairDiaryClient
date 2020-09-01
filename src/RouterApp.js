@@ -46,7 +46,7 @@ const RouterApp = (props) => {
                 <About/>
             </Route>
             <Route exact path="/entries">
-                <EntryLog/>
+            {protectedViews()}
             </Route>
         </Switch>
         </div>
