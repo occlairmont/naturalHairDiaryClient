@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {Paper, Grid, CardMedia }from '@material-ui/core';
 import Pics from '../assets/girlintwists.jpg';
 
-const font = "'Barlow', san-serif"
+const font = "'Lato', san-serif"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: font,
   },
   media: {
-      height: '85vh'
+      height: '100vh'
   }
 }));
 

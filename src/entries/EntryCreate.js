@@ -3,18 +3,31 @@ import {makeStyles} from "@material-ui/core/styles";
 import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Radio, RadioGroup, FormControlLabel, FormLabel } from "@material-ui/core";
 import APIURL from '../helpers/environment';
 
+const font = "'Lato', san-serif"
+const secFont = "'Frank Ruhl Libre', serif"
+
 const useStyles = makeStyles((theme) => ({
     root: {
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
-        // width: '25ch',
       },
     },
     paper: {
         textAlign: "center",
         color: theme.palette.text.secondary,
         margin: '10px',
-      },    
+        fontFamily: font,
+      }, 
+    button: {
+      fontFamily: font,
+    },
+    title: {
+      textAlign:'center',
+      color: theme.palette.text.secondary,
+      fontFamily: secFont,
+      fontWeight: 500,
+      marginBottom: '10px'
+    }
   }));
 
 const EntryCreate = (props) => {
@@ -34,14 +47,6 @@ const EntryCreate = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
-
-// const handleRadioChange = (e) => {
-//   
-// 
-// 
-// 
-//  setIsSuccessful(e.target.value)
-// };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +72,6 @@ const EntryCreate = (props) => {
         setGoal("");
         setProducts("");
         setStyle("");
-        // not sure what to put for isSuccessful since it's a boolean
         setIsSuccessful("");
         setNote("");
         props.fetchEntries();
@@ -91,20 +95,19 @@ const EntryCreate = (props) => {
         onClose={handleClose}
         aria-labelledby="wash-day-entry"
         className={classes.root}>
-        <DialogTitle id="wash-day-entry" style={{textAlign: "center"}}>Wash Day Entry</DialogTitle>
+        <h2 id="wash-day-entry" className={classes.title}>Wash Day Entry</h2>
         <DialogContent>
           <DialogContentText>
              This is to encourage you to keep going in your journey. So enter as much or as little as you need to record your progress. 
           </DialogContentText>
           <TextField
           id="standard-textarea"
-          // label="Date"
-          // placeholder="MM/DD/YYYY"
+          label="Date"
+          placeholder="MM/DD/YYYY"
           variant="outlined"
           value={formatDate(date)}
           onChange={(e) => setDate(e.target.value)}
-          // type="date"
-        />
+          />
           <TextField
           id="standard-textarea"
           label="Goal"
@@ -152,10 +155,10 @@ const EntryCreate = (props) => {
         />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="default">
+          <Button onClick={handleClose} color="default" className={classes.button}>
             Cancel
           </Button>
-          <Button onClick={handleSubmit} value="submit" color="default" >
+          <Button onClick={handleSubmit} value="submit" color="default" className={classes.button}>
             Save
           </Button>
         </DialogActions>

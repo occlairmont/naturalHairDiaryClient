@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -9,14 +10,39 @@ import 'date-fns';
 import {Button} from '@material-ui/core';
 import APIURL from '../helpers/environment';
 
+const font = "'Lato', san-serif"
+const secFont = "'Frank Ruhl Libre', serif"
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      "& .MuiTextField-root": {
+        margin: theme.spacing(1),
+      },
+    },
+    paper: {
+    //   textAlign: "center",
+      color: theme.palette.text.secondary,
+      margin: "10px",
+      fontFamily: font,
+
+    },
+    title: {
+      textAlign:'center',
+      color: theme.palette.text.secondary,
+      fontFamily: secFont,
+      fontWeight: 500,
+      marginBottom: '20px'
+    },
+    button: {
+      fontFamily: font,
+    },
+  }));
+  
+
 const CalendarSearch = (props) => {
+    const classes = useStyles()
     const [startDate, setStartDate] = useState(new Date('2020-01-01T21:11:54'));
     const [endDate, setEndDate] = useState(new Date('2020-01-01T21:11:54'));
-    const [open, setOpen] = useState(false);
-
-    const handleClose = () => {
-        setOpen(false);
-      };
 
     const handleStartDateChange = (date) => {
         setStartDate(date);
@@ -28,27 +54,12 @@ const CalendarSearch = (props) => {
     
     function formatDate(date){
         let convertedDate = new Date(date).toISOString().split("T")[0];
-        // 1996-10-15T00:05:32.000Z
-        // [1996-10-15, 00:05:32.000Z]
-        // 1996-10-15
-        // let day = convertedDate.split("-")[2]
-        // [1996, 10, 15]
-        // let month = convertedDate.split("-")[1]
-        // let year = convertedDate.split("-")[0]
-        // return `${month}/${day}/${year}`
         return convertedDate;
     }
 
     useEffect(() => {
         console.log(startDate)
     },[startDate])
- //  const dateRange = (start, end) => {  
-//      
-//       
-//      
-// 
-//       
-//  }
 
     const handleSubmit = () => {
         const start = formatDate(startDate);
@@ -103,7 +114,7 @@ const CalendarSearch = (props) => {
                     />
                 </Grid>
             </MuiPickersUtilsProvider>
-            <Button onClick={handleSubmit}>Search</Button>
+            <Button onClick={handleSubmit} className={classes.paper} variant='outlined'>Search</Button>
         </div>
      );
 }

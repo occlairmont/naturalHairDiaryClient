@@ -6,7 +6,6 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Radio,
   RadioGroup,
   FormControlLabel,
@@ -14,17 +13,29 @@ import {
 } from "@material-ui/core";
 import APIURL from '../helpers/environment';
 
+const font = "'Lato', san-serif"
+const secFont = "'Frank Ruhl Libre', serif"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      // width: '25ch',
     },
   },
   paper: {
     textAlign: "center",
     color: theme.palette.text.secondary,
     margin: "10px",
+  },
+  title: {
+    textAlign:'center',
+    color: theme.palette.text.secondary,
+    fontFamily: secFont,
+    fontWeight: 500,
+    marginBottom: '20px'
+  },
+  button: {
+    fontFamily: font,
   },
 }));
 
@@ -74,12 +85,11 @@ const EntryEdit = (props) => {
       <Dialog
         open={true}
         onClose={handleClose}
-        aria-labelledby="wash-day-entry"
-        className={classes.root}>
-        <DialogTitle id="wash-day-entry" style={{ textAlign: "center" }}>
+        aria-labelledby="wash-day-entry">
+        <h2 id="wash-day-entry" className={classes.title}>
           Wash Day Entry
-        </DialogTitle>
-        <DialogContent>
+        </h2>
+        <DialogContent className={classes.root}>
           <TextField
             id="date"
             label="Date"
@@ -136,10 +146,10 @@ const EntryEdit = (props) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="default" className={classes.button}>
             Cancel
           </Button>
-          <Button onClick={handleSubmit} color="primary">
+          <Button onClick={handleSubmit} color="default" className={classes.button}>
             Update
           </Button>
         </DialogActions>

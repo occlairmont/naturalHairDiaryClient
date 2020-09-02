@@ -11,8 +11,8 @@ import {
 import { EditRounded, DeleteRounded } from "@material-ui/icons";
 import APIURL from '../helpers/environment';
 
-const font = "'Barlow', san-serif"
-const secFont = "'Shadows Into Light', san-serif"
+const font = "'Lato', san-serif"
+const secFont = "'Frank Ruhl Libre', serif"
 
 const useStyles = makeStyles({
   root: {
@@ -34,11 +34,12 @@ const useStyles = makeStyles({
     marginBottom: 10,
     textAlign: "left",
     fontFamily: secFont,
-    // fontSize: 25,
+    fontWeight: 400,
   },
   respos: {
     textAlign: "left",
     fontFamily: font,
+    paddingLeft: '8px'
   },
 });
 

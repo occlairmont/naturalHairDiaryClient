@@ -2,8 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {AppBar, Toolbar,Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 
-const secFont = "'Shadows Into Light', san-serif"
+const font = "'Lato', san-serif"
+const secFont = "'Frank Ruhl Libre', serif"
 
 const useStyles = makeStyles({
   root: {
@@ -20,6 +22,7 @@ const useStyles = makeStyles({
   },
   button:{
     color:'#ECEBE4',
+    fontFamily: font,
   },
 });
 
@@ -35,7 +38,7 @@ const Navbar = (props) => {
           </Typography>
           <Button className={classes.button} component={Link} to="/about">About</Button>
           <Button className={classes.button} component={Link} to="/entries">Entries</Button>
-          <Button onClick={props.clickLogout} className={classes.button}>Logout</Button>
+          <Button onClick={props.clickLogout} className={classes.button}><ExitToAppRoundedIcon/></Button>
         </Toolbar>
       </AppBar>
     </div>
