@@ -52,9 +52,9 @@ const Signup = (props) => {
   return (
     <form onSubmit={handleSubmit} className={classes.root}>
       <h1 className={classes.title}>Welcome!</h1>
-      <h5 className={classes.body}>Ready to take the next step in accepting yourself?
+      <h5 className={classes.body}>Ready to take the next step in your new journey?
           <br/>
-          Signup below to begin your journey to loving your beautiful, natural hair.
+          Signup below to begin loving your beautiful, natural hair.
       </h5>
       <FormGroup>
         <Input

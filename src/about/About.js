@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
     color: theme.palette.text.secondary,
   },
   content: {
@@ -24,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
       height: '100vh'
   },
   title: {
-    fontFamily: secFont
+    fontFamily: secFont,
+    marginTop: '6px'
   }
 }));
 
@@ -40,7 +40,7 @@ const About = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6} md={7}>
-            <Paper className={classes.content}>
+            <Paper className={classes.content} >
             <h2 className={classes.title}>The Start of Your Natural Hair Journey.</h2>
                 <span>Going natural can seem like such a daunting adventure especially when a lot of us haven't dealt with or even see our own hair most, if not all, our lives. However, for those who are willing to allow that part of us to be free, there is potential for it flourish. </span>
                 <br/>
