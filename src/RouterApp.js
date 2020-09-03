@@ -5,6 +5,7 @@ import EntryLog from './entries/EntryLog';
 import Navbar from './nav/Navbar';
 import About from './about/About';
 import { Route, Switch } from 'react-router-dom';
+import Footer from './nav/Footer';
 
 const RouterApp = (props) => {
     const [sessionToken, setSessionToken] = useState('');
@@ -49,6 +50,7 @@ const RouterApp = (props) => {
             {protectedViews()}
             </Route>
         </Switch>
+        <Footer/>
         </div>
      );
 }

@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     fontFamily: secFont,
   },
   color:{
-    backgroundColor: '#406464',
+    backgroundColor: '#487070',
   },
   button:{
     color:'#ECEBE4',

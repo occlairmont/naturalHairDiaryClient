@@ -98,7 +98,7 @@ const EntryCreate = (props) => {
         <h2 id="wash-day-entry" className={classes.title}>Wash Day Entry</h2>
         <DialogContent>
           <DialogContentText>
-             This is to encourage you to keep going in your journey. So enter as much or as little as you need to record your progress. 
+             This is where you would record the details of your wash day. So enter as much or as little as you need to track your progress. 
           </DialogContentText>
           <TextField
           id="standard-textarea"
